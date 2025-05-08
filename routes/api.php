@@ -4,6 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\BookingController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,15 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::put('/edit-user/{id}', [UserController::class, 'editUser']);
     Route::delete('/delete-user/{id}', [UserController::class, 'deleteUser']);
 
+    Route::get('/get-rooms', [RoomController::class, 'getRooms']);
+    Route::post('/add-rooms', [RoomController::class, 'addRoom']);
+    Route::put('/edit-room/{id}', [RoomController::class, 'editRoom']);
+    Route::delete('/delete-room/{id}', [RoomController::class, 'deleteRoom']);
+
+    Route::get('/get-bookings', [BookingController::class, 'getBookings']);
+    Route::post('/add-bookings', [BookingController::class, 'addBooking']);
+    Route::put('/edit-bookings/{id}', [BookingController::class, 'editBooking']);
+    Route::delete('/delete-bookings/{id}', [BookingController::class, 'deleteBooking']);
 
     Route::post('/logout', [AuthenticationController::class, 'logout']);
 });

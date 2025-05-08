@@ -17,23 +17,27 @@ class RoomController extends Controller
 
     public function addRoom(Request $request){
         $request->validate([
-            'room_number' => ['required', 'string', 'max:255'],
-            'room_name' => ['required', 'string', 'max:255'],
-            'room_type' => ['required', 'string', 'max:255'],
-            'room_status' => ['required', 'string', 'max:255'],
-            'room_capacity' => ['required', 'integer'],
-            'room_location' => ['required', 'string', 'max:255'],
-            'room_description' => ['nullable', 'string'],
+
+        'number' => ['required', 'string', 'max:255'],
+        'price' => ['required', 'string', 'max:255'],
+        'name' => ['required', 'string', 'max:255'],
+        'type' => ['required', 'string', 'max:255'],
+        'status' => ['required', 'string', 'max:255'],
+        'capacity' => ['required', 'integer'],
+        'location' => ['required', 'string', 'max:255'],
+        'description' => ['nullable', 'string'],
+        
         ]);
 
         $room = Room::create([
-            'room_number' => $request->room_number,
-            'room_name' => $request->room_name,
-            'room_type' => $request->room_type,
-            'room_status' => $request->room_status,
-            'room_capacity' => $request->room_capacity,
-            'room_location' => $request->room_location,
-            'room_description' => $request->room_description,
+            'number' => $request->number,
+            'price' => $request->price,
+            'name' => $request->name,
+            'type' => $request->type,
+            'status' => $request->status,
+            'capacity' => $request->capacity,
+            'location' => $request->location,
+            'description' => $request->description,
         ]);
 
         return response()->json(['message' => 'Room successfully created!', 'room' => $room]);
@@ -41,13 +45,14 @@ class RoomController extends Controller
     }
     public function editRoom(Request $request, $id){
         $request->validate([
-            'room_number' => ['required', 'string', 'max:255'],
-            'room_name' => ['required', 'string', 'max:255'],
-            'room_type' => ['required', 'string', 'max:255'],
-            'room_status' => ['required', 'string', 'max:255'],
-            'room_capacity' => ['required', 'integer'],
-            'room_location' => ['required', 'string', 'max:255'],
-            'room_description' => ['nullable', 'string'],
+            'number' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'string', 'max:255'],
+            'status' => ['required', 'string', 'max:255'],
+            'capacity' => ['required', 'integer'],
+            'location' => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
         ]);
 
         $room = Room::find($id);
@@ -57,13 +62,14 @@ class RoomController extends Controller
         }
 
         $room->update([
-            'room_number' => $request->room_number,
-            'room_name' => $request->room_name,
-            'room_type' => $request->room_type,
-            'room_status' => $request->room_status,
-            'room_capacity' => $request->room_capacity,
-            'room_location' => $request->room_location,
-            'room_description' => $request->room_description,
+            'number' => $request->number,
+            'price' => $request->price,
+            'name' => $request->name,
+            'type' => $request->type,
+            'status' => $request->status,
+            'capacity' => $request->capacity,
+            'location' => $request->location,
+            'description' => $request->description,
         ]);
 
         return response()->json(['message' => 'Room successfully updated!', 'room' => $room]);

@@ -19,8 +19,8 @@ return new class extends Migration
         });
 
             $userTypes = [
-                ['name' => 'Admin'],
-                ['name' => 'Receptionist'],
+                ['id' => 1, 'name' => 'Admin'],
+                ['id' => 2, 'name' => 'Receptionist'],
             ];
 
             foreach($userTypes as $userType){
